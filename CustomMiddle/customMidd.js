@@ -7,7 +7,7 @@ let bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
 }))
 
 app.use(function (req, res,next) {
@@ -27,9 +27,9 @@ app.get('/', (req, res) => {
 
 });
 
-app.post('/api/post/', (req, res) => {
-    let name = request.body.name;
-    let age = request.body.age;
+app.post('/', (req, res) => {
+    let name = req.body.name;
+    let age = req.body.age;
 
     console.log(`Post request \n name & age is ${name} ${age}`);
 

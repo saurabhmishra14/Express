@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/post', (req, res) => {
-    let task = {
+    let task = {                 //when defining object outside gives muktiply array elements
         ID: arr.length + 1,
         Name: req.body.task
     };
