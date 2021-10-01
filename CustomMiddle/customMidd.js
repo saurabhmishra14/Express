@@ -44,5 +44,4 @@ app.delete('/api/delete/:id', (req, res) => {
     console.log(`Delete Request Made: ${arr}`);
 });
 
-app.listen(3000, () =>
-    console.log("Running on port",3000));
+app.listen(3000, () => console.log("Running on port",3000));

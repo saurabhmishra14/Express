@@ -22,7 +22,6 @@ app.post('/post', (req, res) => {
     res.redirect('/');
 });
 
-
 app.put('/put', (req, res) => {
     let id = req.body.id;
     let task = req.body.task;
@@ -32,7 +31,6 @@ app.put('/put', (req, res) => {
     }
     res.redirect('/');
 });
-
 
 app.delete('/delete/', (req, res) => {
     let id = req.body.id;
