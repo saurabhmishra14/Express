@@ -2,14 +2,14 @@ const http = require("http"); //Importing http module to create server with help
 const url = require('url');
 
 http.createServer((req, res) => { //CreateServer with the help of http module,callback function resposded whenever we call it in local machine
-    var clientRequestPath = url.parse(req.url).pathname;  //Provide the pathname of the requested url
-
+    let clientRequestPath = url.parse(req.url).pathname; //Provide the pathname of the requested url
+       
     switch (clientRequestPath) {
-        case '/':                     //denote the localhost:3000
+        case '/': //denote the localhost:3000
             res.write("Hello World"); //.write is used to print in created server
             break;
 
-        case '/about':           //denote the localhost:3000
+        case '/about': //denote the localhost:3000
             res.write("My name is Saurabh Mishra");
     }
     res.end();

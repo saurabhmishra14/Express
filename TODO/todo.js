@@ -1,35 +1,25 @@
-var express = require('express');
-var app = express();
-var PORT = 3000;
-let arr = [];
-
-let bodyParser = require('body-parser');
-
-
-
+const express = require('express');
+const app = express();
+const PORT = 3000;
+const todo = [];
+const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }))
 
-
-
 app.get('/', (req, res) => {
-    console.log(arr);
+    console.log(todo);
 
 });
 
 app.post('/post', (req, res) => {
-    let task = {                 //when defining object outside gives muktiply array elements
-        ID: arr.length + 1,
+    let task = { //when defining object outside gives muktiply array elements
+        ID: todo.length + 1,
         Name: req.body.task
     };
-
-
-    arr.push(task);
+    todo.push(task);
     res.redirect('/');
-
-
 });
 
 
@@ -37,26 +27,24 @@ app.put('/put', (req, res) => {
     let id = req.body.id;
     let task = req.body.task;
     if (id >= 1) {
-        console.log(`${arr[id-1].Name} update as ${task}`);
-        arr[id - 1].Name = task;
+        console.log(`${todo[id-1].Name} update as ${task}`);
+        todo[id - 1].Name = task;
     }
     res.redirect('/');
-
 });
 
 
 app.delete('/delete/', (req, res) => {
     let id = req.body.id;
     if (id >= 1) {
-        console.log(`Deleted Task is ${arr[id-1].Name} `);
-
-        for (let i = id; i < arr.length; ++i) {
-            (arr[i].ID) --;
+        console.log(`Deleted Task is ${todo[id-1].Name} `);
+           
+        for (let i = id; i < todo.length; ++i) {
+            (todo[i].ID) --;
         }
-        arr.splice(id - 1, 1);
+        todo.splice(id - 1, 1);
     }
     res.redirect('/');
 });
 
-app.listen(3000, () =>
-    console.log("Running on port", 3000));
+app.listen(3000, () => console.log("Running on port", 3000));
